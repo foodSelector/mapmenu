@@ -21,8 +21,7 @@ public class MyListAdapter extends BaseAdapter {
     LayoutInflater Inflater;
     ArrayList<MyItem> arSrc;
     int layout;
-    ListView MyList;
-    int count=0;
+
 
     public MyListAdapter(Context context, int alayout, ArrayList<MyItem> aarSrc){
         maincon=context;
@@ -60,16 +59,6 @@ public class MyListAdapter extends BaseAdapter {
         MyList.setOnItemClickListener(mItemClickListener);*/
         return convertView;
     }
-    final AdapterView.OnItemClickListener mItemClickListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            Button btn=(Button)view.findViewById(R.id.btn);
-            btn.setVisibility(View.VISIBLE);
-
-
-        }
-    };
 
 
 

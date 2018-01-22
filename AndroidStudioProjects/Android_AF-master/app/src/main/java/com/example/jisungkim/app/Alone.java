@@ -29,7 +29,9 @@ import java.util.ArrayList;
 
 public class Alone extends AppCompatActivity implements OnMapReadyCallback {
 
+
     ArrayList<MyItem> arItem;
+    int count=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +64,20 @@ public class Alone extends AppCompatActivity implements OnMapReadyCallback {
         MyList=(ListView) findViewById(R.id.list_item);
         MyList.setAdapter(MyAdapter);
 
-        MyList.setOnItemClickListener(MyAdapter.mItemClickListener);
+
+        final AdapterView.OnItemClickListener mItemClickListener= new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /*position = MyList.getCheckedItemPosition();*/
+                Button btn=(Button)view.findViewById(R.id.btn);
+
+                    btn.setVisibility(view.VISIBLE);
+
+            }
+        };
+
+        MyList.setOnItemClickListener(mItemClickListener);
+
 
 
 
@@ -85,7 +100,7 @@ public class Alone extends AppCompatActivity implements OnMapReadyCallback {
 
     public void mmOnClick(View v){
         Button btn=(Button)findViewById(R.id.btn);
-        Intent intent=new Intent(Alone.this,Main3Activity.class);
+        Intent intent=new Intent(this,Main3Activity.class);
         startActivity(intent);
     }
 
@@ -107,9 +122,12 @@ public class Alone extends AppCompatActivity implements OnMapReadyCallback {
 
 
         MyListAdapter MyAdapter = new MyListAdapter(this, R.layout.list,arItem);
-        ListView MyList;
+        final ListView MyList;
         MyList=(ListView) findViewById(R.id.list_item);
         MyList.setAdapter(MyAdapter);
+
+
+
    /*     Intent intent=getIntent();
         String mtext=intent.getStringExtra("a3");
         String mtext2=intent.getStringExtra("a2");
